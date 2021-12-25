@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:training_app/colors.dart' as color;
 
@@ -9,6 +11,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List info = [];
+  @override
+  initState() {
+    super.initState();
+    DefaultAssetBundle.of(context)
+        .loadString("lib/json/info.json")
+        .then((value) {
+      setState(() {
+        info = json.decode(value);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                               offset: const Offset(-4, -5))
                         ],
                         image: const DecorationImage(
-                            image: AssetImage('assets/img/card.jpg'),
+                            image: AssetImage('img/card.jpg'),
                             fit: BoxFit.fill)),
                   ),
                   Container(
@@ -192,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                     margin: const EdgeInsets.only(left: 20),
                     decoration: const BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage('assets/img/figure.png'))),
+                            image: AssetImage('img/figure.png'))),
                   ),
                   Container(
                       // color: Colors.red.withOpacity(0.2),
@@ -237,22 +252,79 @@ class _HomePageState extends State<HomePage> {
                 child: OverflowBox(
               maxWidth: MediaQuery.of(context).size.width,
               child: ListView.builder(
-                  itemCount: 4,
+                  itemCount: (info.length / 2).round(),
                   itemBuilder: (conttext, i) {
+                    int a = 2 * i;
+                    int b = 2 * i + 1;
+
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           width: (MediaQuery.of(context).size.width - 90) / 2,
-                          height: 90,
+                          height: 150,
                           margin: const EdgeInsets.only(left: 30, bottom: 20),
-                          color: Colors.red.withOpacity(0.2),
+                          padding: const EdgeInsets.only(bottom: 5),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: color.AppColor.gradientSecond
+                                        .withOpacity(0.1),
+                                    blurRadius: 3,
+                                    offset: const Offset(5, 5)),
+                                BoxShadow(
+                                    color: color.AppColor.gradientSecond
+                                        .withOpacity(0.1),
+                                    blurRadius: 3,
+                                    offset: const Offset(-5, -5)),
+                              ],
+                              image: DecorationImage(
+                                  image: AssetImage(info[a]["img"]))),
+                          child: Center(
+                            child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  info[a]["title"],
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: color.AppColor.homePageDetail),
+                                )),
+                          ),
                         ),
                         Container(
                           width: (MediaQuery.of(context).size.width - 90) / 2,
-                          height: 90,
+                          height: 150,
                           margin: const EdgeInsets.only(bottom: 20, right: 30),
-                          color: Colors.green.withOpacity(0.2),
+                          padding: const EdgeInsets.only(bottom: 5),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: color.AppColor.gradientSecond
+                                        .withOpacity(0.1),
+                                    blurRadius: 3,
+                                    offset: const Offset(5, 5)),
+                                BoxShadow(
+                                    color: color.AppColor.gradientSecond
+                                        .withOpacity(0.1),
+                                    blurRadius: 3,
+                                    offset: const Offset(-5, -5)),
+                              ],
+                              image: DecorationImage(
+                                  image: AssetImage(info[b]["img"]))),
+                          child: Center(
+                            child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  info[b]["title"],
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: color.AppColor.homePageDetail),
+                                )),
+                          ),
                         ),
                       ],
                     );
