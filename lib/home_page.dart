@@ -12,16 +12,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List info = [];
-  @override
-  initState() {
-    super.initState();
-    DefaultAssetBundle.of(context)
-        .loadString("lib/json/info.json")
+
+  _innitState() async {
+    await DefaultAssetBundle.of(context)
+        .loadString("../lib/json/info.json")
         .then((value) {
       setState(() {
         info = json.decode(value);
       });
     });
+  }
+
+  @override
+  initState() {
+    super.initState();
+    _innitState();
   }
 
   @override

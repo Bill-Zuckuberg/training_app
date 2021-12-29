@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:training_app/colors.dart' as color;
 import 'package:training_app/separator.dart';
@@ -10,6 +12,24 @@ class VideosInfo extends StatefulWidget {
 }
 
 class _VideosInfoState extends State<VideosInfo> {
+  List videoInfo = [];
+
+  _inniState() {
+    DefaultAssetBundle.of(context)
+        .loadString("../lib/json/info_videos.json")
+        .then((value) {
+      setState(() {
+        videoInfo = json.decode(value);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _inniState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,7 +74,7 @@ class _VideosInfoState extends State<VideosInfo> {
                       fontWeight: FontWeight.w200),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 80,
                 ),
                 Row(
                   children: [
@@ -179,7 +199,7 @@ class _VideosInfoState extends State<VideosInfo> {
                   ),
                   Expanded(
                     child: ListView.builder(
-                        itemCount: 5,
+                        itemCount: videoInfo.length,
                         itemBuilder: (context, index) {
                           return Column(children: [
                             const SizedBox(
@@ -193,8 +213,10 @@ class _VideosInfoState extends State<VideosInfo> {
                                   decoration: BoxDecoration(
                                       color: Colors.green.withOpacity(0.2),
                                       borderRadius: BorderRadius.circular(15),
-                                      image: const DecorationImage(
-                                          image: AssetImage("img/item1.png"))),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              videoInfo[index]["thumbnail"]),
+                                          fit: BoxFit.cover)),
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -202,9 +224,9 @@ class _VideosInfoState extends State<VideosInfo> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
-                                      'Squat and Walk',
-                                      style: TextStyle(
+                                    Text(
+                                      videoInfo[index]["title"],
+                                      style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 14,
                                           decoration: TextDecoration.none,
@@ -214,7 +236,7 @@ class _VideosInfoState extends State<VideosInfo> {
                                       height: 10,
                                     ),
                                     Text(
-                                      '45 seconds',
+                                      videoInfo[index]["time"],
                                       style: TextStyle(
                                           color:
                                               color.AppColor.homePagePlanColor,
@@ -250,20 +272,7 @@ class _VideosInfoState extends State<VideosInfo> {
                                     ),
                                   ),
                                 ),
-                                const Expanded(child: MySeparator()
-                                    // Row(
-                                    //   children: List.generate(
-                                    //       100 ~/ 1,
-                                    //       (index) => Expanded(
-                                    //             child: Container(
-                                    //               color: index % 2 == 0
-                                    //                   ? Colors.transparent
-                                    //                   : Colors.grey,
-                                    //               height: 2,
-                                    //             ),
-                                    //           )),
-                                    // ),
-                                    )
+                                const Expanded(child: MySeparator())
                               ],
                             )
                           ]);
