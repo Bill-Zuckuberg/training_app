@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:training_app/colors.dart' as color;
+import 'package:training_app/page/video_info.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -82,18 +84,26 @@ class _HomePageState extends State<HomePage> {
                       color: color.AppColor.homePageSubTitle,
                     )),
                 Expanded(child: Container()),
-                Text(
-                  'Detail',
-                  style: TextStyle(
-                      fontSize: 20, color: color.AppColor.homePageDetail),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.arrow_forward_outlined,
-                  size: 20,
-                  color: color.AppColor.homePageIcons,
+                InkWell(
+                  hoverColor: Colors.white,
+                  onTap: () => Get.to(() => VideosInfo()),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Detail',
+                        style: TextStyle(
+                            fontSize: 20, color: color.AppColor.homePageDetail),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_outlined,
+                        size: 20,
+                        color: color.AppColor.homePageIcons,
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

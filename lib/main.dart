@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:training_app/home_page.dart';
-import 'package:training_app/video_info.dart';
+import 'package:get/get.dart';
+import 'package:training_app/page/home_page.dart';
+import 'package:training_app/page/video_info.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
