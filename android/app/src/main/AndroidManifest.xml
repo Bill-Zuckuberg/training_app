@@ -2,10 +2,8 @@
     package="com.example.training_app">
    <application
         android:label="training_app"
-        android:name="${applicationName}"
+        android:name="${applicationName}" 
         android:icon="@mipmap/ic_launcher">
-        <!-- Thêm code de chay video tren android -->
-        <uses-permission android:name="android.permission.INTERNET"/>        
         <activity
             android:name=".MainActivity"
             android:exported="true"
