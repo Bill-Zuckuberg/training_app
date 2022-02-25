@@ -1,8 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.training_app">
    <application
+<<<<<<< HEAD
         android:label="Gym"
         android:name="${applicationName}"
+=======
+        android:label="training_app"
+        android:name="${applicationName}" 
+>>>>>>> 6e6db91bfe96adee00cc91c32a2e22bf19e13a5c
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
