@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:training_app/colors.dart' as color;
@@ -23,7 +22,7 @@ class _VideosInfoState extends State<VideosInfo> {
 
   _inniData() {
     DefaultAssetBundle.of(context)
-        .loadString("../lib/json/info_videos.json")
+        .loadString("json/info_videos.json")
         .then((value) {
       setState(() {
         videoInfo = json.decode(value);
@@ -421,7 +420,8 @@ class _VideosInfoState extends State<VideosInfo> {
                     color: Colors.green.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
-                        image: AssetImage(videoInfo[index]["thumbnail"]),
+                        image: AssetImage("assets/img/thumbnail/" +
+                            videoInfo[index]["thumbnail"]),
                         fit: BoxFit.cover)),
               ),
               const SizedBox(

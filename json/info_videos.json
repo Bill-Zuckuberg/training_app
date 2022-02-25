@@ -2,22 +2,22 @@
     {
         "title":"Glues",
         "time":"45 seconds",
-        "thumbnail": "img/thumbnail/thumbnail1.jpg",
+        "thumbnail": "thumbnail1.jpg",
         "video":"https://video-previews.elements.envatousercontent.com/files/85e1ae2c-3958-4443-b1b5-57bf2cae77d0/video_preview_h264.mp4"
     },{
           "title":"Glues",
         "time":"65 seconds",
-        "thumbnail": "img/thumbnail/thumbnail2.jpg",
+        "thumbnail": "thumbnail2.jpg",
         "video":"https://video-previews.elements.envatousercontent.com/files/18a1750d-f137-4181-bb47-91836d7f7255/video_preview_h264.mp4"
     },{
         "title":"Glues",
         "time":"35 seconds",
-        "thumbnail": "img/thumbnail/thumbnail3.jpg",
+        "thumbnail": "thumbnail3.jpg",
         "video":"https://video-previews.elements.envatousercontent.com/files/9acc7d7e-1954-4c54-a5d4-60900f9cfd19/video_preview_h264.mp4"
     },{
         "title":"Glues",
         "time":"67 seconds",
-        "thumbnail": "img/thumbnail/thumbnail4.jpg",
+        "thumbnail": "thumbnail4.jpg",
         "video":"https://video-previews.elements.envatousercontent.com/files/3d873f5a-fd24-4633-99d4-03929b7451a2/video_preview_h264.mp4"
     } 
 ]
